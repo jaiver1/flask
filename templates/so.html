@@ -11,10 +11,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                    {% for facultad in facultades %}
+                    {% for facultad in so %}
                         <tr>
                             <th scope="row">{{ facultad[0] }}</th>
-                            <td>{{ facultad[1] }}</td>
+                            <td>{{ facultad }}</td>
                             <td style="color:#ffffff; background-color:{{ facultad[2] }};">{{ facultad[2] }}</td>
                         </tr>
                     {% endfor %}

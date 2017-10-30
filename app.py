@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-class so(db.Model):
+class So(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     release = db.Column(db.String(100), unique=True)
     nodename = db.Column(db.String(100), unique=True)
@@ -36,6 +36,17 @@ class so(db.Model):
 @app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/so/show')
+def soShow():
+    so = So.query.all()
+    return render_template('so.html',so = so)
+
+
+@app.route('/mem/show')
+def memShow():
+    careers = So.query.all()
+    return render_template('mem.html',carreras = careers)
 
 
 @app.route('/robots.txt')
