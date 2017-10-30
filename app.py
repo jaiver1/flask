@@ -23,13 +23,13 @@ class So(db.Model):
     so = db.Column(db.String(100), unique=True)
     hardware = db.Column(db.String(100), unique=True)
 
-    def __init__(self, release, nodename, kernelv, machine, processor, os, hardware):
+    def __init__(self, release, nodename, kernelv, machine, processor, so, hardware):
         self.release = release
         self.nodename = nodename
         self.kernelv = kernelv
         self.machine = machine
         self.processor = processor
-        self.os = os
+        self.so = so
         self.hardware = hardware
 
     def __repr__(self):
