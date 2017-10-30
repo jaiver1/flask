@@ -35,8 +35,8 @@ class So(db.Model):
         self.hardware = hardware
 
     def __repr__(self):
-        return "<Os(id='%d', kernel='%s', release='%s', nodename='%s', kernelv='%s', machine='%s')>" % (
-        self.id, self.kernel, self.release, self.nodename, self.kernelv, self.machine)
+        return "<Os(id='%d', kernel='%s', release='%s', nodename='%s', kernelv='%s', machine='%s', processor='%s', so='%s', hardware='%s')>" % (
+        self.id, self.kernel, self.release, self.nodename, self.kernelv, self.machine, self.processor, self.so, self.hardware)
 
 
 @app.route('/')
@@ -45,7 +45,7 @@ def home():
 
 @app.route('/so/show')
 def soShow():
-    so = So.query.filter(User.id == 1).one()
+    so = So.query.filter(So.id == 1).one()
     return render_template('so.html',so = so)
 
 
