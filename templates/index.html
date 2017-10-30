@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Pagina Principal {% endblock %}
 
 {% block content %}
+
+<ul class="nav nav-tabs nav-justified indigo" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="{{ url_for('home') }}" role="tab"><i class="fa fa-home"></i> Pagina Principal</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="{{ url_for('soShow') }}" role="tab"><i class="fa fa-heart"></i> Sistema Operativo</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-envelope"></i> No disponible</a>
+    </li>
+</ul>
+
+<div class="container" style="height: 100vh">
+    <div class="flex-center flex-column">
+
+<blockquote class="blockquote bq-primary">
+    <p class="bq-title">Servidor Heroku</p>
+    <p>Sirve para leer la informacion del monitoring.py</p>
+</blockquote>
+
+    </div>
+</div>
 {% endblock %}

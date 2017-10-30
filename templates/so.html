@@ -1,8 +1,52 @@
 {% extends 'base.html' %}
 
-{% block title %} Operative System {% endblock %}
+{% block title %} Sistema Operativo {% endblock %}
 
 {% block content %}
-{{ so.kernel }}
+
+<ul class="nav nav-tabs nav-justified indigo" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="{{ url_for('home') }}" role="tab"><i class="fa fa-home"></i> Pagina Principal</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="{{ url_for('soShow') }}" role="tab"><i class="fa fa-heart"></i> Sistema Operativo</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-envelope"></i> No disponible</a>
+    </li>
+</ul>
+
+<div class="container" style="height: 100vh">
+    <div class="flex-center flex-column">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>Kernel</th>
+                <th>Release</th>
+                <th>NodeName</th>
+                <th>KernelV</th>
+                <th>Machine</th>
+                <th>Processor</th>
+                <th>So</th>
+                <th>Hardware</th>
+              </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <th scope="row">{{ so.id }}</th>
+                        <td>{{ so.kernel }}</td>
+                        <td>{{ so.release }}</td>
+                        <td>{{ so.nodename }}</td>
+                        <td>{{ so.kernelv }}</td>
+                        <td>{{ so.machine }}</td>
+                        <td>{{ so.processor }}</td>
+                        <td>{{ so.so }}</td>
+                        <td>{{ so.hardware }}</td>
+                    </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
 {% endblock %}
   
