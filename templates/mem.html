@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Carreras</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/mdb.css') }}">
+</head>
+
+<body>
+    <div class="container" style="height: 100vh">
+        <div class="flex-center flex-column">
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Facultad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for carrera in carreras %}
+                        <tr>
+                            <th scope="row">{{ carrera[0] }}</th>
+                            <td>{{ carrera[2] }}</td>
+                            <td>{{ carrera[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+</html>
