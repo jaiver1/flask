@@ -1,26 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container" style="height: 100vh">
-        <div class="flex-center flex-column">
-            <table class="table table-striped">
-                <thead class="thead-inverse">
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Color</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {% for facultad in so %}
-                        <tr>
-                            <th scope="row">{{ facultad[0] }}</th>
-                            <td>{{ facultad }}</td>
-                            <td style="color:#ffffff; background-color:{{ facultad[2] }};">{{ facultad[2] }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-              </table>
-        </div>
-    </div>
+    
 {% endblock %}
   

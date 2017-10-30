@@ -33,7 +33,7 @@ class So(db.Model):
         self.hardware = hardware
 
     def __repr__(self):
-        return '<Name %r>' % self.os
+        return '<Name %r>' % self.so
 
 
 @app.route('/')
