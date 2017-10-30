@@ -4,17 +4,25 @@
 
 {% block content %}
 
-<ul class="nav nav-tabs nav-justified indigo" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="{{ url_for('home') }}" role="tab"><i class="fa fa-home"></i> Pagina Principal</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="{{ url_for('soShow') }}" role="tab"><i class="fa fa-heart"></i> Sistema Operativo</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-envelope"></i> No disponible</a>
-    </li>
-</ul>
+
+<nav class="navbar navbar-expand-lg navbar-dark red">
+    <a class="navbar-brand" href="#">informacion SO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Pagina Principal <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('soShow') }}">Sistema Operativo/a>
+            </li>
+        </ul>
+    </div>
+</nav>
+                
 
 <div class="container" style="height: 100vh">
     <div class="flex-center flex-column">
