@@ -1,7 +1,0 @@
-#!/bin/bash
-while :
-do
-	RESPONSE=$(curl http://localhost:5000/os)
-	echo curl http://localhost:8080/os/update/actualizer
-	sleep 2
-done

@@ -1,36 +1,38 @@
-from flask import Flask,render_template
-from flaskext.mysql import MySQL
+import os
 
+from flask import Flask
+from flask import render_template
+from flask.ext.sqlalchemy import SQLAlchemy
 
-mysql = MySQL()
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = 'srcg'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
+
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
+    email = db.Column(db.String(120), unique=True)
+
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+    def __repr__(self):
+        return '<Name %r>' % self.name
 
 
 @app.route('/')
-def index():
+def home():
     return render_template('index.html')
 
 
-@app.route("/os/show")
-def osShow():
-    cursor = mysql.connect().cursor()
-    cursor.execute("SELECT * FROM facultades")
-    faculties = cursor.fetchall()
-    return render_template('os.html',facultades = faculties)
-
-
-@app.route("/mem/show")
-def memShow():
-    cursor = mysql.connect().cursor()
-    cursor.execute("SELECT * FROM programas")
-    careers = cursor.fetchall()
-    return render_template('mem.html',carreras = careers)
-
+@app.route('/robots.txt')
+def robots():
+    res = app.make_response('User-agent: *\nAllow: /')
+    res.mimetype = 'text/plain'
+    return res
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
