@@ -1,3 +1,4 @@
+#KEY = postgresql-closed-81267
 import os
 
 from flask import Flask
@@ -9,17 +10,27 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-class User(db.Model):
+class so(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
-    email = db.Column(db.String(120), unique=True)
+    release = db.Column(db.String(100), unique=True)
+    nodename = db.Column(db.String(100), unique=True)
+    kernelv = db.Column(db.String(100), unique=True)
+    machine = db.Column(db.String(100), unique=True)
+    processor = db.Column(db.String(100), unique=True)
+    so = db.Column(db.String(100), unique=True)
+    hardware = db.Column(db.String(100), unique=True)
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
+    def __init__(self, release, nodename, kernelv, machine, processor, os, hardware):
+        self.release = release
+        self.nodename = nodename
+        self.kernelv = kernelv
+        self.machine = machine
+        self.processor = processor
+        self.os = os
+        self.hardware = hardware
 
     def __repr__(self):
-        return '<Name %r>' % self.name
+        return '<Name %r>' % self.os
 
 
 @app.route('/')
