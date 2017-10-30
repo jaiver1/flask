@@ -15,6 +15,7 @@ db = SQLAlchemy(app)
 
 class So(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    kernel = db.Column(db.String(100), unique=True)
     release = db.Column(db.String(100), unique=True)
     nodename = db.Column(db.String(100), unique=True)
     kernelv = db.Column(db.String(100), unique=True)
@@ -23,7 +24,8 @@ class So(db.Model):
     so = db.Column(db.String(100), unique=True)
     hardware = db.Column(db.String(100), unique=True)
 
-    def __init__(self, release, nodename, kernelv, machine, processor, so, hardware):
+    def __init__(self, kernel, release, nodename, kernelv, machine, processor, so, hardware):
+        self.kernel = kernel
         self.release = release
         self.nodename = nodename
         self.kernelv = kernelv
@@ -33,7 +35,8 @@ class So(db.Model):
         self.hardware = hardware
 
     def __repr__(self):
-        return '<Name %r>' % self.so
+        return "<Os(id='%d', kernel='%s', release='%s', nodename='%s', kernelv='%s', machine='%s')>" % (
+        self.id, self.kernel, self.release, self.nodename, self.kernelv, self.machine)
 
 
 @app.route('/')
@@ -42,7 +45,7 @@ def home():
 
 @app.route('/so/show')
 def soShow():
-    so = So.query.all()
+    so = So.query.filter(User.id == 1).one()
     return render_template('so.html',so = so)
 
 

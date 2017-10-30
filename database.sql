@@ -1,5 +1,6 @@
 CREATE TABLE So(
 "id" SERIAL,
+"kernel" VARCHAR(100),
 "release" VARCHAR(100),
 "nodename" VARCHAR(100),
 "kernelv" VARCHAR(100),
@@ -10,5 +11,5 @@ CREATE TABLE So(
 );
 
 INSERT INTO So VALUES 
-(1,'release','node','ibm','200mb','x64','ms-dos','old');
+(1,'linux','release','node','ibm','200mb','x64','ms-dos','old');
 
